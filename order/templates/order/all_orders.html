@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}
+    All Orders | Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            
+            <li class="breadcrumb-item active">Your Orders</li>                   
+          </ul>
+
+          {% if orders %}
+
+          <div class="container">
+            <div class="card">
+              <div class="card-header">Your Orders</div>
+
+              <div class="row">
+                <div class="col-1">
+
+                </div>
+                <div class="col-9 card-body">
+                  {% for i in orders%}
+                    {{i.order_id}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    {{i.username}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    
+                    
+                    
+                    {% ifequal i.status 'requested'%} <div class="badge badge-secondary">{{i.status|title}}</div> {% endifequal %}
+                    {% ifequal i.status 'approve'%} <div class="badge badge-success">{{i.status|title}}d</div> {% endifequal %}
+                    {% ifequal i.status 'decline'%} <div class="badge badge-danger">{{i.status|title}}d</div> {% endifequal %}
+                    {% ifequal i.status 'return'%} <div class="badge badge-warning">{{i.status|title}}ed</div> {% endifequal %}
+                    {% ifequal i.status 'deploy' %} <div class="badge badge-dark">{{i.status|title}}ed</div>{% endifequal %}
+                    
+
+                    
+
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    {{i.created_at|date:"d-m-Y"}}
+                    &nbsp;&nbsp;&nbsp;&nbsp;<a class="text-center" 
+                                               href="{% url 'order:order-detail-admin' i.id %}">
+                                               View Order
+                                               </a> <br><br>
+                  {% endfor %}
+                </div>
+                <div class="col-2"></div>
+              </div>
+             </div>
+              
+          </div>
+          {% else %}
+
+          <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Your Orders</h4>
+              </div>
+              <div class="card-body"><br>
+                  <div class="row">
+
+                    <div class="col-sm-7 col-md-6 text-center">
+                        <img src="{% static "assets/img/ec1.png" %}" 
+                        width: 100%;
+                        height: auto;><br>
+                        <h5 class="text-center">No more<span style="color: orangered;"> orders!</span></h5>                  
+                       
+                    </div>
+                                       
+                  </div>               
+               <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          No Orders!!!
+
+          {% endif %}
+
+        </section>
+    </div>  
+{% endblock %}

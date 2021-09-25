@@ -1,0 +1,78 @@
+<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Categories List</h4>
+                    <div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search by name" id = "myInput" onkeyup="myFunction()">
+                          <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                          <a href="{% url 'components:add-category' %}"><div class="badge badge-secondary">Add category</div></a>
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                  <div class="card-body p-0">
+                      <table class="table table-striped" id = "myTable">
+                        <tr>
+                          <th class="text-center" onclick="sortTable(0)">Category ID&nbsp;<i class="fas fa-sort"></i></th>
+                          <th onclick="sortTable(1)">Category Name&nbsp;<i class="fas fa-sort"></i></th>
+                          <th>Description</th>
+                          <th>Action</th>
+                          
+                          
+                          
+                          
+                        </tr>
+                        {% for i in cats %}
+                        <tr>
+                          
+
+                              <td class="p-0 text-center">
+                                  {{i.id}}
+                                </div>
+                              </td>
+                              <td>{{i.name}}</td>
+                              <td>
+
+                              {{i.description|slice:":40"}}...
+                              </td>
+
+                              <td>
+                                <a href="{% url 'components:update-category' i.id %}" class="btn btn-info btn-md"
+                                    data-toggle="tooltip" data-placement="top"
+                                    title="edit"
+                                ><i class="fas fa-pen"></i></a>
+                                &nbsp;
+                                <a href="{% url 'components:delete-category' i.id %}" class="btn btn-danger btn-md"
+                                  data-toggle="tooltip" data-placement="top"
+                                  title="Delete"
+                                
+                                ><i class="fas fa-trash"></i></a>
+
+                              </td>
+                              
+
+                              
+                                         
+                         
+                          
+                          
+                          
+                        </tr>  
+                        {% endfor %}   
+                       
+                     
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>

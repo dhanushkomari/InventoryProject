@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order Detail| Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            
+            <li class="breadcrumb-item active">Order Detail</li>                   
+          </ul>
+
+          <div class="container">
+
+            <div class="card">
+              <div class="card-header">
+                    
+                    
+                       <h4>Order Details</h4> 
+                       
+                    
+              </div>
+              
+              
+              <div class="card-body">
+                {% if order %}
+                    Order ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{order}}</span><br><br>
+                    Order by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{order.username}}</span><br><br>
+                    
+                    Order Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp;&nbsp;  
+                    
+                    
+                    {% ifequal order.status 'requested' %} <div class="badge badge-secondary">{{order.status|title}}</div>{% endifequal %}
+                    {% ifequal order.status 'approve' %} <div class="badge badge-success">{{order.status|title}}d</div>{% endifequal %}
+                    {% ifequal order.status 'decline' %} <div class="badge badge-danger">{{order.status|title}}d</div>{% endifequal %}
+                    {% ifequal order.status 'return' %} <div class="badge badge-warning">{{order.status|title}}ed</div>{% endifequal %}
+                    {% ifequal order.status 'deploy' %} <div class="badge badge-dark">{{order.status|title}}ed</div>{% endifequal %}
+                    
+                    
+                    
+                    <br><br>
+                    Date of request&nbsp;&nbsp;  :&nbsp;&nbsp;  <span style="color: black;">{{order.created_at|date:"d-m-Y"}}</span>
+                {% endif %} <br><br>                
+              </div>
+
+              <div class="row">
+                <div class="col-1">
+
+                </div>
+
+                <div class="col-9 col-md-6 col-lg-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Component Details</h4>
+                      {% if order %}  
+                        {% ifequal 'requested' order.status %}
+                        <div class="card-header-form">                         
+                            <div class="input-group">                            
+                                <a href = "{% url 'order:order-accept' order.id %}" class="btn btn-success" href="">approve</a>  
+                                <a href="{% url 'order:order-decline' order.id %}" class="btn btn-warning">decline</a>                          
+                            </div>                                                   
+                        </div>
+                        {% endifequal %}
+
+                       
+                        {% ifequal 'approve' order.status %}
+                        <div class="card-header-form">                         
+                            <div class="input-group"> 
+                                 <a 
+                                    data-toggle="modal" data-target="#exampleModal"
+                                    href="{% url 'order:order-deploy' order.id %}"
+                                    class = "btn btn-dark"
+                                    
+                                    >
+                                    
+
+                                    Deploy
+                                  </a>                          
+                                <a href="{% url 'order:order-return' order.id %}" class="btn btn-danger" href="">Return</a>                            
+                            </div>                        
+                        </div>
+                        {% endifequal %}
+                      
+
+
+                      {% endif %}
+                      
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-md">
+                          <tr>                           
+                            <th class="text-center">Component Name</th>
+                            <th class="text-center">Quantity</th>                          
+                          </tr>
+
+                          
+                          {% for i in oi %}
+                
+                          <tr>
+                            
+                            <td class="text-center">{{i.component}}</td>
+                            <td class="text-center">{{i.quantity}}</td>
+                            
+                          </tr>
+                            
+                          {% endfor %}                          
+                          
+                        </table>
+                      </div>
+                    </div>
+              </div>
+                
+            </div>
+
+                <div class="col-2">
+
+                </div>
+              </div>        
+
+        </section>
+    </div>  
+
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="formModal"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+
+              <div class="modal-body">
+                <form method="POST" action = "{% url 'order:order-deploy' order.id%}">
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <label>Deployed into: </label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">
+                          <i class="fas fa-project-diagram"></i>
+                        </div>
+                      </div>
+                      <input type="text" class="form-control" placeholder="project_name" name="deployed_into">
+                    </div>
+                  </div>
+                  {% comment %} <a class = "btn btn-dark" href="">Submit</a> {% endcomment %}
+
+                </form>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+
+
+{% endblock %}

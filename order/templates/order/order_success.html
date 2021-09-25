@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Components Requested | Vistan Nextgen
+{% endblock %}
+
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            
+            <li class="breadcrumb-item active">Order submitted</li>                   
+          </ul>        
+          
+<br><br>
+          <div class="container">
+              <center><img src="{% static "assets/img/ord_pla.png" %}" alt="" width ="20%" height="20%"></center><br>
+              <h5 class="text-center">Thank You for Requesting Components, 
+               <br> Please contact inventory admin to pick the components!</h5>
+               <br>
+               <h6 class="text-center">Want to request more components <br><br>
+          <a href="{% url 'components:component-list-all' %}" class="btn btn-md btn-outline-dark">Click here</a></h6>
+            </div>
+
+          
+
+          
+          
+        </section>
+      </div>
+    </div>
+{% endblock %}

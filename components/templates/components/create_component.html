@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+        Components | Vistan Nextgen Pvt Ltd
+{% endblock%}
+            
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
+            <li class="breadcrumb-item active">Add Category</li>                   
+          </ul>      
+
+
+            <div class="card">
+                <div class="card-header">
+                <h4>Add Category</h4>
+            </div>
+                  
+            <div class="card-body">       
+                <div class="container">
+                    <form method = "POST">
+                        {% csrf_token %}
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.name|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.category|as_crispy_field }}
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.component_location|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.vendor|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.invoice|as_crispy_field }}
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                
+                                <div class="form-group col-md-4 mb-0">
+                                    <label for="">Date of order*</label>
+                                    <input type="date" class="form-control" id = "" name = "date_of_order" format="YYYY/MM/DD">
+                                </div>
+
+
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.stock|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.price|as_crispy_field }}
+                                </div>
+                            </div>
+                                    
+                          
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12 mb-0">
+                                    {{ form.description|as_crispy_field }}
+                                </div>
+                                
+                            </div>
+                        
+
+                     <div class="footer">
+                         <button class="btn btn-primary">Submit</button>
+                     </div>
+                    </form>
+                </div> 
+               </div>    
+        </section>
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block js %}
+
+{% if messages%}
+  <script>
+        iziToast.show({
+                        title: '',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'green'
+                        /* {% for i in messages%}
+                          {% ifequal 'danger' i.tags %} red
+                          {% else %} green
+                          {% endifequal%}
+                        {% endfor %} */
+                    });
+  </script>
+  {% endif %}
+
+{% endblock %}

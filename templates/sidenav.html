@@ -1,0 +1,79 @@
+{% load static %}
+
+<div class="main-sidebar sidebar-style-2 sticky">
+        <aside id="sidebar-wrapper">
+          <div class="sidebar-brand">
+            <a href="{% url 'components:component-list-all' %}"> <img alt="image" src="{% static "assets/img/vistanlogo.png" %}" class="header-logo" /> 
+            <span style="font-size: 65%;" class="logo-name">HR Inventory</span>
+            </a>
+          </div>
+          
+          <br><br>
+
+          {% if request.user.is_staff %}
+            {% include 'admin-sidenav.html' %} 
+
+          {% else %}
+          <ul class="sidebar-menu">
+            <li class="menu-header">Employee</li>
+            
+            <li>
+              <a href="#" ><i
+                  data-feather="airplay"></i><span>Dashboard</span></a>
+            </li>
+            
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Components</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'components:component-list-all' %}">Request for components</a></li>
+                <li><a class="nav-link" href="#">Component Notifications</a></li>
+              </ul>
+            </li>
+            <li >
+              <a href="{% url 'bag:bag_details' %}" ><i data-feather="shopping-bag"></i><span>Your Bag</span></a>
+              
+            </li>
+            
+            <li >
+              <a href="{% url 'order:user-orders' %}" ><i data-feather="tag"></i><span>Your Orders</span></a>
+              
+            </li>
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i
+                  data-feather="calendar"></i><span>Leaves</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="avatar.html">Request For Leave</a></li>
+                <li><a class="nav-link" href="modal.html">Leaves Dashboard</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="#">Profile</a></li>
+                <li><a class="nav-link" href="#">Change Password</a></li>
+                <li><a class="nav-link" href="#">Logout</a></li>
+                
+              </ul>
+            </li>
+
+
+            
+           
+          </ul>
+          {% endif %}
+
+          {% comment %} <li>
+            {% for group_for in request.user.groups.all %}
+                
+                {% if group_for.name == 'employee' %}
+                    USER IN EMPLOYEE GROUP
+                {% elif group_for.name == 'hr' %}
+                    Text showed to users in group 'hr'
+                {% endif %} 
+          {% endfor %}
+          </li> {% endcomment %}
+
+
+          </aside>
+      </div>

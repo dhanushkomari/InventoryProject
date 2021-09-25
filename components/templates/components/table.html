@@ -1,0 +1,70 @@
+<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Components List</h4>
+                    <div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search by name" id = "myInput" onkeyup="myFunction()">
+                          <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                  <div class="card-body p-0">
+                      <table class="table table-striped" id = "myTable">
+                        <tr>
+                          <th class="text-center" onclick="sortTable(0)">Component ID&nbsp;<i class="fas fa-sort"></i></th>
+                          <th onclick="sortTable(1)">Component Name&nbsp;<i class="fas fa-sort"></i></th>
+                          <th>Category</th>
+                          <th>Details</th>
+                          {% comment %} <th>Status</th>{% endcomment %}
+                          
+                          <th>Action</th>
+                        </tr>
+                        {% for i in qs %}
+                        <tr>
+                          
+
+                              <td class="p-0 text-center">
+                                  {{i.component_id}}
+                                </div>
+                              </td>
+                              <td>{{i.name}}</td>
+                              <td>{{i.category|lower}}</td>
+                              <td><a style="text-decoration: none;" href=""><i class="fas fa-eye"></i> View</a></td>
+
+                              {% comment %} <td>
+                                {% if i.avialable == True %}
+                                <div class="badge badge-success">Avaialable</div>
+                                {% else %}
+                                <div class="badge badge-danger">Unavaialable</div>                              
+                                {% endif%}
+                              </td> {% endcomment %}
+                                         
+                         
+                          
+                          <td>
+                            {% if i.stock <= 0 %}
+                              <div class="badge badge-warning">No stock Avaialable</div>                           
+                            {% else %}
+                              <a href="{% url 'bag:add_to_bag' i.component_id %}" class="btn btn-sm btn-primary">Add to bag</a>
+                            {% endif %}
+                          </td>
+                          
+                        </tr>  
+                        {% endfor %}   
+                       
+                     
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>

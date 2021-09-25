@@ -1,0 +1,106 @@
+{% load static %}
+<div class="navbar-bg"></div>
+      <nav class="navbar navbar-expand-lg main-navbar sticky">
+        <div class="form-inline mr-auto">
+          <ul class="navbar-nav mr-3">
+            <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg
+									collapse-btn"> <i data-feather="menu"></i></a></li>           
+            
+                {% if cat %}
+                  <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+                    class="nav-link nav-link-lg message-toggle" style="color: black;">Select Category &nbsp;&#129175;
+                    <span class="">
+                    </span> </a>  
+                                  
+                  <div class="dropdown-menu DropdownMenuLink">  
+                    <a href="{% url 'components:component-list-all' %}" style="text-decoration: none;">
+                      <div class="dropdown-item">
+                        all components
+                      </div>
+                    </a>                   
+
+                    {% for i in cat%}  
+
+                    <a href="{{i.get_url}}" style="text-decoration: none;">
+                    <div class="dropdown-item">
+                      {{i.name|lower}}
+                    </div>
+                  </a>
+                    {% endfor %}
+                  </div>
+
+                  
+                  
+                </li>
+                {% endif %}
+
+                
+
+          </ul>
+        </div>
+       <ul class="navbar-nav navbar-right">
+          
+            
+        <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+          class="nav-link nav-link-lg message-toggle"><i data-feather="shopping-bag" class="shopping-bag"></i>
+          <span class="badge headerBadge1">
+          </span> </a>
+        <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+          <div class="dropdown-header">
+            Messages
+            <div class="float-right">
+              <a href="#">Mark All As Read</a>
+            </div>
+          </div>
+          
+          <div class="dropdown-footer text-center">
+            <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </li>
+    
+            
+
+
+          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown"
+              class="nav-link nav-link-lg message-toggle"><i data-feather="bell" class="bell"></i>
+              <span class="badge headerBadge1">
+              </span> </a>
+            <div class="dropdown-menu dropdown-list dropdown-menu-right pullDown">
+              <div class="dropdown-header">
+                Messages
+                <div class="float-right">
+                  <a href="#">Mark All As Read</a>
+                </div>
+              </div>
+              
+              <div class="dropdown-footer text-center">
+                <a href="#">View All <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </div>
+          </li>
+
+          <li class="dropdown"><a href="#" data-toggle="dropdown"
+              class="nav-link dropdown-toggle nav-link-lg nav-link-user"><i data-feather="user"></i><span class="d-sm-none d-lg-inline-block"></span></a>
+            <div class="dropdown-menu dropdown-menu-right pullDown">
+              <div class="dropdown-title">Hello {{user.username}}</div>
+              <a href="profile.html" class="dropdown-item has-icon"> <i class="fas
+										fa-user"></i> Profile
+              </a> 
+              <a href="profile.html" class="dropdown-item has-icon"> <i class="fas
+										fa-key"></i>Reset Password
+              </a> 
+              <div class="dropdown-divider"></div>
+              <a href="{% url 'accounts:auth-logout' %}" class="dropdown-item has-icon text-danger"> <i class="fas fa-sign-out-alt"></i>
+                Logout
+              </a>
+            </div>
+          </li>
+        
+          
+          
+        
+
+          
+        </ul>
+      </nav>

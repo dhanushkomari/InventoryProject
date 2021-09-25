@@ -1,0 +1,41 @@
+.container__list {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    min-width: 0;
+  }
+  
+  .container__listItem {
+    flex: 0 0 25%;
+    padding: 10px 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  .container__listItem > div {
+    color: #DB6356;
+    text-decoration: underline;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  
+  /* End Single Section Menu */
+  
+  /* Start Multiple Section Menu */
+  .container.has-multi .container__listItem {
+    flex-basis: 100%;
+  }
+  
+  .container.has-multi .container__list {
+    flex-basis: 33.333%;
+    border-radius: 4px;
+  }
+  
+  .container.has-multi .container__list:not(:last-child) {
+    border-right: solid 1px #f3f3f3;
+    margin-right: 20px;
+  }
+  

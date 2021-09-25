@@ -1,0 +1,58 @@
+<ul class="sidebar-menu">
+            <li class="menu-header">ADMIN</li>
+            
+            <li>
+              <a href="#" ><i
+                  data-feather="airplay"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="tag"></i><span>Component Orders</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'order:all-orders' %}">Component Requests</a></li>
+                <li><a class="nav-link" href="#">Component Dashboard</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="calendar"></i><span>Leaves</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="{% url 'components:component-list-all' %}">Leave Requests</a></li>
+                <li><a class="nav-link" href="#">Leave Dashboard</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Components</span></a>
+              <ul class="dropdown-menu">
+
+                <li><a class="nav-link" href="{% url 'components:all-components-admin' %}">All Components</a></li>
+                <li><a class="nav-link" href="{% url 'components:add-component' %}">add Components</a></li>                
+                <li><a href="{% url 'components:all-categories' %}" class="nav-link">All Categories</a></li>
+                <li><a class="nav-link" href="{% url 'components:add-category' %}">Add Category</a></li>
+                
+
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="users"></i><span>Employees</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="#">All Employees</a></li>
+
+                <li><a class="nav-link" href="{% url 'components:component-list-all' %}">Add Employees</a></li>
+                <li><a class="nav-link" href="#">Update Employees</a></li>
+              </ul>
+            </li>
+
+
+            
+            
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="#">Edit Profile</a></li>
+                <li><a class="nav-link" href="#">Change Password</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:auth-logout' %}">Logout</a></li>
+                
+</ul>

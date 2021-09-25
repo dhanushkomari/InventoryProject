@@ -1,0 +1,95 @@
+{%load static %}
+<div class="container">
+    {% if bag_items %}
+
+
+    <div class="row">
+      <p class="text-center">Want to add more components? <a href="{% url 'components:component-list-all' %}">Click here</a></p>
+      <div class="col-sm-12 col-md-9 col-lg-10">
+        <div class="card">
+          <div class="card-header">
+            <h4>Components List</h4>
+            <div class="card-header-form">
+              
+              <form>
+                
+                
+              </form>
+            </div>
+          </div>
+          <div class="table-responsive">
+          <div class="card-body p-0">
+              <table class="table table-striped" id = "myTable">
+                <tr>                  
+                  <th  class="text-center">Component Name</th>
+                  <th class="text-center">Quantity</th>
+                  <th class="text-center">Actions</th>                 
+                </tr>
+                
+                {% for i in bag_items %}
+                <tr>                  
+                  <td class="text-center">{{i.component}}</td>
+                  <td class="text-center">{{i.quantity}}</td>
+
+                  <td class="text-center">
+                    {% if i.quantity < i.component.stock %}                    
+                        <a class="btn-sm btn btn-primary" href="{% url 'bag:add_to_bag' i.component.component_id %}">+</a> &nbsp; 
+                        <a class="btn-sm btn btn-warning" href="{% url 'bag:remove-item' i.component_id %}">-</a> &nbsp; 
+                        <a class="btn-sm btn btn-danger" href="{% url 'bag:delete-items' i.component_id %}"><i class="fas fa-trash"></i></a>
+                    {% else %}
+                        <a class="btn-sm btn btn-warning" href="{% url 'bag:remove-item' i.component_id %}">-</a> &nbsp; 
+                        <a class="btn-sm btn btn-danger" href="{% url 'bag:delete-items' i.component_id %}"><i class="fas fa-trash"></i></a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+
+                {% if bag_items %}
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td class="text-center"><a class="btn btn-sm btn-info" href = "{% url 'bag:request_components' %}">Request for components</a></td>
+                  
+                </tr>
+                {% endif %}
+                   
+             
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% else %}
+
+
+        <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>Your bag</h4>
+              </div>
+              <div class="card-body"><br>
+                  <div class="row">
+
+                    <div class="col-sm-7 col-md-6 text-center">
+                        <img src="{% static "assets/img/ec1.png" %}" 
+                        width: 100%;
+                        height: auto;><br>
+                        <h5 class="text-center">Your components Bag is <span style="color: orangered;"> Empty !</span></h5>                  
+                       
+                    </div>
+                    <div class="col-sm-5 col-md-6"><br><br><br><br>
+                        <center><h5 class="text-center"> Want to add Components to <span style="color: orange;"> Your Bag ?</span></h5><br>
+                        <a  href="{% url 'components:component-list-all' %}" class="btn btn-md btn-outline-dark">Click here</a></center>
+                    </div>                   
+                  </div>               
+               <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    {% endif %}
+
+    
+</div>

@@ -1,0 +1,653 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ul>
+          
+          {% include 'main-cards.html' %}
+
+          
+          <!-- <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Assign Project List</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive" id="proTeamScroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Cust.</th>
+                          <th>Project</th>
+                          <th>Assign Date</th>
+                          <th>Team</th>
+                          <th>Priority</th>
+                          
+                        </tr>
+                      </thead>
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-8.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Wordpress Website</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Airi Satou</span>
+                          </p>
+                        </td>
+                        <td>20-02-2018</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-9.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-10.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-red">High</div>
+                        </td>
+                        
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-1.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Android Game App</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Sarah Smith</span>
+                          </p>
+                        </td>
+                        <td>22-05-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-4.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-7.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-2.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-green">Low</div>
+                        </td>
+                        
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-5.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Java Web Service</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Cara Stevens</span>
+                          </p>
+                        </td>
+                        <td>11-04-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-7.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-blue">Medium</div>
+                        </td>
+                       
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-9.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Wedding IOS App</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> John Doe</span>
+                          </p>
+                        </td>
+                        <td>19-05-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-2.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-10.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-4.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-red">High</div>
+                        </td>
+                        
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-10.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Blize Admin Template</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Ashton Cox</span>
+                          </p>
+                        </td>
+                        <td>25-07-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-1.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-7.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-blue">Medium</div>
+                        </td>
+                       
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-4.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">React js website</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Sarah Smith </span>
+                          </p>
+                        </td>
+                        <td>11-08-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-green">Low</div>
+                        </td>
+                        
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-10.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">SEO improvement</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Janak Gandhi</span>
+                          </p>
+                        </td>
+                        <td>22-02-2018</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-9.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-1.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-red">High</div>
+                        </td>
+                        
+                      <tr>
+                        <td class="table-img"><img src="{% static "assets/img/users/user-6.png" %}" alt="">
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Laravel Website</h6>
+                          <p class="m-0 font-12">
+                            Assigned to<span class="col-green font-weight-bold"> Mili Rain</span>
+                          </p>
+                        </td>
+                        <td>31-03-2019</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-4.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Wildan Ahdian"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-7.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="John Deo"></li>
+                            <li class="team-member team-member-sm"><img class="rounded-circle"
+                                src="{% static "assets/img/users/user-2.png" %}" alt="user" data-toggle="tooltip" title=""
+                                data-original-title="Sarah Smith"></li>
+                            <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge-outline col-green">Low</div>
+                        </td>
+                        
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Project Team</h4>
+                </div>
+                <div class="card-body">
+                  <div class="media-list position-relative">
+                    <div class="table-responsive" id="project-team-scroll">
+                      <table class="table table-hover table-xl mb-0">
+                        <thead>
+                          <tr>
+                            <th>Project Name</th>
+                            <th>Employees</th>
+                            <th>Cost</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td class="text-truncate">Project X</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-9.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="John Deo"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-10.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$8999</td>
+                          </tr>
+                          <tr>
+                            <td class="text-truncate">Project AB2</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-1.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="John Deo"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-2.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+1</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$5550</td>
+                          </tr>
+                          <tr>
+                            <td class="text-truncate">Project DS3</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-9.png" %}" alt="user" data-toggle="tooltip" title=""
+                            </td>
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+4</span></li>
+                              </ul>
+                            <td class="text-truncate">$9000</td>
+                          </tr>
+                          <tr>
+                            <td class="text-truncate">Project XCD</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="John Deo"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+2</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$7500</td>
+                          </tr>
+                          <tr>
+                            <td class="text-truncate">Project Z2</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-8.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-10.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$8500</td>
+                          </tr>
+                          <tr>
+                            <td class="text-truncate">Project GTe</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$8500</td>
+                          </tr>
+
+                                                   <tr>
+                            <td class="text-truncate">Project GTe</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$8500</td>
+                          </tr>
+
+
+                                                    <tr>
+                            <td class="text-truncate">Project GTe</td>
+                            <td class="text-truncate">
+                              <ul class="list-unstyled order-list m-b-0">
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-3.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Wildan Ahdian"></li>
+                                <li class="team-member team-member-sm"><img class="rounded-circle"
+                                    src="{% static "assets/img/users/user-5.png" %}" alt="user" data-toggle="tooltip" title=""
+                                    data-original-title="Sarah Smith"></li>
+                                <li class="avatar avatar-sm"><span class="badge badge-primary">+3</span></li>
+                              </ul>
+                            </td>
+                            <td class="text-truncate">$8500</td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+          
+        </section>
+
+
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Assign Project List</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive" id="proTeamScroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Project</th>
+                          <th>Customer</th>
+                          <th>Team</th>
+                          <th>Status</th>
+                          <th>Start Date</th>
+                          <th>Delivery Date</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tr>
+                        <td><a href="#">Project 1</a></td>
+                        <td class="font-weight-600">Sarah Smith</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0 m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-8.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-9.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="John Deo">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-10.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+4</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-purple">In Progress</div>
+                        </td>
+                        <td>July 19, 2018</td>
+                        <td>March 25, 2019</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Project 2</a></td>
+                        <td class="font-weight-600">Airi Satou</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0 m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-3.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-7.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+2</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-green">Completed</div>
+                        </td>
+                        <td>March 21, 2015</td>
+                        <td>July 22, 2017</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Project 3</a></td>
+                        <td class="font-weight-600">Ashton Cox</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0 m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-1.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-5.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="John Deo">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-9.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+5</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-orange">cancelled</div>
+                        </td>
+                        <td>January 02, 2018</td>
+                        <td>March 12, 2019</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Project 4</a></td>
+                        <td class="font-weight-600">Cara Stevens</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-4.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-7.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="John Deo">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-10.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="John Deo">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-2.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+1</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-purple">In Progress</div>
+                        </td>
+                        <td>July 19, 2018</td>
+                        <td>March 25, 2019</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Project 5</a></td>
+                        <td class="font-weight-600">John Doe</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-8.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-4.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="John Deo">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-3.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+2</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-green">Completed</div>
+                        </td>
+                        <td>May 11, 2017</td>
+                        <td>March 15, 2018</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><a href="#">Project 6</a></td>
+                        <td class="font-weight-600">Angelica Ramos</td>
+                        <td class="text-truncate">
+                          <ul class="list-unstyled order-list m-b-0">
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-3.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Wildan Ahdian">
+                            </li>
+                            <li class="team-member team-member-sm">
+                              <img class="rounded-circle" src="{% static "assets/img/users/user-1.png" %}" alt="user"
+                                data-toggle="tooltip" title="" data-original-title="Sarah Smith">
+                            </li>
+                            <li class="avatar avatar-sm">
+                              <span class="badge badge-primary">+2</span>
+                            </li>
+                          </ul>
+                        </td>
+                        <td>
+                          <div class="badge l-bg-orange">cancelled</div>
+                        </td>
+                        <td>November 02, 2018</td>
+                        <td>April 05, 2019</td>
+                        <td>
+                          <a href="#" class="btn btn-primary">Detail</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          
+        
+      </div>
+
+      
+
+{% endblock %}
+
+
+{% block title %}
+  Dashboard | Vistan Nextgen Pvt Ltd
+{% endblock%}
+      
+      

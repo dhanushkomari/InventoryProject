@@ -1,0 +1,89 @@
+{% extends 'accounts/auth-base.html' %}
+
+{% load static %}
+
+{% block title %}Create Employee | HRInventory | Vistannextgen{% endblock %}
+
+{% block content %}
+
+
+        <div class="row">
+          <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2">
+            <div class="card card-info">
+              <center><img src="{% static "assets/img/vistan-logo1.png" %}" width="35%" height="50%" class="" alt=""></center>
+
+              <div class="card-header">
+                <h4>Register Employee</h4>
+              </div>
+              <div class="card-body">
+                <form method="POST" class = "needs-validation" novalidate="">
+                  {% csrf_token %}
+
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="frist_name">First Name</label>
+                      <input id="frist_name" type="text" class="form-control" name="first_name" autofocus required>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="last_name">Last Name</label>
+                      <input id="last_name" type="text" class="form-control" name="last_name" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" name="email" required>
+                    <div class="invalid-feedback">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-8">
+                      <label for="frist_name">UserName</label>
+                      <input id="username" type="text" class="form-control" name="username" autofocus required>
+                    </div>
+                    <div class="form-group col-4">
+                      <label for="last_name">Employee Id</label>
+                      <input id="employee_id" type="text" class="form-control" name="employee_id" required>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">Password</label>
+                      <input id="password" required type="password" class="form-control pwstrength" data-indicator="pwindicator"
+                        name="password1">
+                      <div id="pwindicator" class="pwindicator">
+                        <div class="bar"></div>
+                        <div class="label"></div>
+                      </div>
+                    </div>
+                    <div class="form-group col-6">
+                      <label for="password" class="d-block">Password Confirmation</label>
+                      <input id="password2" type="password" class="form-control" name="password2" required>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                      Register
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+            </div>
+          </div>
+       
+{% endblock %}
+
+{% block js %}
+{% if messages%}
+  <script>
+        iziToast.show({
+                        title: 'Oops!',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'red'
+                    });
+  </script>
+  {% endif %}
+
+{% endblock%}

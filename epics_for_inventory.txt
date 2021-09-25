@@ -1,0 +1,41 @@
+HR & Inventory management System
+
+Features:
+1. Accounts App
+2. Leaves App
+3. Inventory App
+
+Functionalities(BACKEND):
+
+*** Creating DB Tables for Groups, Department.
+*** Creating Groups.
+*** Creating SignUp functionality for all Groups.
+*** Creating Login functionality for all Groups.
+*** Creating Logout functionality.
+*** CRUD Functionalities of users.
+
+*** Leaves DB creation.
+*** Applying a leave Functionality.
+*** Approval or deny of leave functionality.
+
+*** Components DB Creation.
+*** Bag DB Creation.
+*** Adding and updating and deleting a component functionality.
+*** Request for component.
+*** Approval or deny of Component Request.
+
+Templates(FRONTEND):
+
+*** Different Dashboard for Different Users.
+*** Login templates
+*** Creating users templates
+*** leave application templates
+*** Request component templates
+*** Assigned Components list
+*** Stock List with quantity
+
+
+
+
+
+

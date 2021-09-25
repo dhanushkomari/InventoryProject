@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Orders - {{request.user.username}} | Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            
+            <li class="breadcrumb-item active">Order Detail</li>                   
+          </ul>
+
+          <div class="container">
+
+            <div class="card">
+              <div class="card-header">
+                    
+                    
+                       <h4>Order Details</h4> 
+                       
+                    
+              </div>
+              
+              
+              <div class="card-body">
+                {% if order %}
+                    Order ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{order}}</span><br><br>
+                    Order Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp;&nbsp;  
+                    
+                    {% ifequal 'requested' order.status %}<div class="badge badge-secondary">{{order.status}}</div>{% endifequal %}
+                    {% ifequal 'approve' order.status %}<div class="badge badge-success">{{order.status}}d</div>{% endifequal %}
+                    {% ifequal 'decline' order.status %}<div class="badge badge-danger">{{order.status}}d</div>{% endifequal %}
+                    {% ifequal 'return' order.status %}<div class="badge badge-warning">{{order.status}}ed</div>{% endifequal %}
+                    {% ifequal 'deploy' order.status %}<div class="badge badge-dark">{{order.status}}ed</div>{% endifequal %}
+
+
+
+                    
+                    <br><br>
+                    Date of request&nbsp;&nbsp;  :&nbsp;&nbsp;  <span style="color: black;">{{order.created_at|date:"d-m-Y"}}</span>
+                {% endif %} <br><br>                
+              </div>
+
+              <div class="row">
+                <div class="col-1">
+
+                </div>
+
+                <div class="col-9 col-md-6 col-lg-6 col-sm-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Component Details</h4>
+                      
+                      {% comment %} {% if order %}  
+                        {% ifequal 'approve' order.status %}
+                        <div class="card-header-form">                         
+                            <div class="input-group">                            
+                                <a href="{% url 'order:order-return' order.id %}" class="btn btn-danger" href="">Return</a>                            
+                            </div>                        
+                        </div>
+                        {% endifequal %}
+                      {% endif %} {% endcomment %}
+                      
+                    </div>
+                    <div class="card-body p-0">
+                      <div class="table-responsive">
+                        <table class="table table-striped table-md">
+                          <tr>                           
+                            <th class="text-center">Component Name</th>
+                            <th class="text-center">Quantity</th>                          
+                          </tr>
+
+                          
+                          {% for i in oi %}
+                
+                          <tr>
+                            
+                            <td class="text-center">{{i.component}}</td>
+                            <td class="text-center">{{i.quantity}}</td>
+                            
+                          </tr>
+                            
+                          {% endfor %}                          
+                          
+                        </table>
+                      </div>
+                    </div>
+              </div>
+                
+            </div>
+
+                <div class="col-2">
+
+                </div>
+              </div>        
+
+        </section>
+    </div>  
+{% endblock %}
