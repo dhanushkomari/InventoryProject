@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'components',
     'bag',
     'order',
+    'leave',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'components', 'templates'),
             os.path.join(BASE_DIR, 'bag', 'templates'),
             os.path.join(BASE_DIR, 'order', 'templates'),
+            os.path.join(BASE_DIR, 'leave', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

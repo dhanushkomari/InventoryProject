@@ -84,7 +84,7 @@
               class="nav-link dropdown-toggle nav-link-lg nav-link-user"><i data-feather="user"></i><span class="d-sm-none d-lg-inline-block"></span></a>
             <div class="dropdown-menu dropdown-menu-right pullDown">
               <div class="dropdown-title">Hello {{user.username}}</div>
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="fas
+              <a href="{% url 'accounts:edit-user-profile' user.id %}" class="dropdown-item has-icon"> <i class="fas
 										fa-user"></i> Profile
               </a> 
               <a href="profile.html" class="dropdown-item has-icon"> <i class="fas

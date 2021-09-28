@@ -67,7 +67,9 @@ def bag_details(request):
         bag = Bag.objects.get(bag_id = _bag_id(request))
         bag_items = BagItem.objects.filter(bag = bag, active = True)
     except ObjectDoesNotExist:
-        pass
+        bag = Bag.objects.create(bag_id = _bag_id(request))
+        bag.save()
+        bag_items = 'no items'
     return render(request, 'bag/bag.html', {'bag_items':bag_items})
     
 

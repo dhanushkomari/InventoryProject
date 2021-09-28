@@ -5,7 +5,7 @@ from .models import Department
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['id','employee_id', 'username', 'department']
+    list_display = ['id','employee_id', 'username', 'department', ]
     list_per_page = 20
 admin.site.register(User, UserAdmin)
 

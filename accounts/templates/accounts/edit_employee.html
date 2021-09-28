@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+        Components | Vistan Nextgen Pvt Ltd
+{% endblock%}
+            
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
+            <li class="breadcrumb-item active">Edit Employee</li>                   
+          </ul> 
+
+           <div class="card">
+                <div class="card-header">
+                <h4>Update Employee</h4>
+            </div>
+                  
+            <div class="card-body">       
+                <div class="container">
+                    <form method = "POST">
+                        {% csrf_token %}
+
+                            {% comment %} {{form|crispy}}        {% endcomment %}
+
+                            <div class="form-row">
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.first_name|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.last_name|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-4 mb-0">
+                                    {{ form.employee_id|as_crispy_field }}
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.email|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.mobile|as_crispy_field }}
+                                </div>
+                            </div> 
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.department|as_crispy_field }}
+                                </div>
+                                <div class="form-group col-md-6 mb-0">
+                                    {{ form.designation|as_crispy_field }}
+                                </div>
+                            </div>       
+
+
+
+
+                     <div class="footer">
+                         <button class="btn btn-primary">Submit</button>
+                     </div>
+
+                    </form>
+                </div> 
+               </div>    
+        
+
+                      
+          
+        </section>
+      </div>
+    </div>
+{% endblock %}
+
+

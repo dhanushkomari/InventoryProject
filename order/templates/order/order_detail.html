@@ -35,11 +35,11 @@
                     Order ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{order}}</span><br><br>
                     Order Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp;&nbsp;  
                     
-                    {% ifequal 'requested' order.status %}<div class="badge badge-secondary">{{order.status}}</div>{% endifequal %}
-                    {% ifequal 'approve' order.status %}<div class="badge badge-success">{{order.status}}d</div>{% endifequal %}
-                    {% ifequal 'decline' order.status %}<div class="badge badge-danger">{{order.status}}d</div>{% endifequal %}
-                    {% ifequal 'return' order.status %}<div class="badge badge-warning">{{order.status}}ed</div>{% endifequal %}
-                    {% ifequal 'deploy' order.status %}<div class="badge badge-dark">{{order.status}}ed</div>{% endifequal %}
+                    {% ifequal 'requested' order.status %}<div class="badge badge-secondary">{{order.status|title}}</div>{% endifequal %}
+                    {% ifequal 'approve' order.status %}<div class="badge badge-success">{{order.status|title}}d</div>{% endifequal %}
+                    {% ifequal 'decline' order.status %}<div class="badge badge-danger">{{order.status|title}}d</div>{% endifequal %}
+                    {% ifequal 'return' order.status %}<div class="badge badge-warning">{{order.status|title}}ed</div>{% endifequal %}
+                    {% ifequal 'deploy' order.status %}<div class="badge badge-dark">{{order.status|title}}ed</div>{% endifequal %}
 
 
 

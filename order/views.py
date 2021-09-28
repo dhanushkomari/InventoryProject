@@ -151,19 +151,3 @@ def order_deploy(request, id):
         # except ObjectDoesNotExist:
         #     pass
     return redirect('order:all-orders')
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-

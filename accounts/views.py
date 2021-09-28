@@ -7,6 +7,12 @@ from django.http import HttpResponse
 from .models import CustomUser as User
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
+from .forms import UserForm, UserProfileForm
+
+
+def is_employee(user):
+    return user.groups.filter(name='employee').exists()
 
 
 
@@ -81,7 +87,8 @@ def RegisterEmployee(request):
                 Employee_group.user_set.add(user)                          # Adding user to employee group
 
                 messages.success(request, 'New user has added successfully')     
-                return HttpResponse('employee created')
+                # return HttpResponse('employee created')
+                return redirect('accounts:all-employes')
             
             else:
                 messages.warning(request, 'passwords do not matched')
@@ -89,7 +96,77 @@ def RegisterEmployee(request):
     return render(request, 'accounts/auth-register.html')
 
 
+###########    ALL EMPLOYEES     ######################
+@staff_member_required(login_url='accounts:auth-login')
+def allEmployees(request):
+    emp = User.objects.filter(groups = 1)  
+    print(emp)  
+    # return HttpResponse('Hii')
+    return render(request, 'accounts/all_employees.html', {'emp':emp})
+
+
+###############    EDIT EMPLOYEES     ######################
+@staff_member_required(login_url='accounts:auth-login')
+def editEmployee(request, id):
+    if request.method == "POST":
+        obj = get_object_or_404(User, id = id)
+        form = UserForm(request.POST, instance=obj)
+
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'employee profile updated')
+            return redirect('accounts:all-employes')
+        else:
+            messages.info(request, 'invalid form data')
+    else:
+        obj = get_object_or_404(User, id = id)
+        form = UserForm(instance =obj)
+    return render(request, 'accounts/edit_employee.html', {'form':form})
+
+###############  EDIT PROFILE(FOR EMPLOYEE SIDE)   #########
+# @user_passes_test(is_employee)
+def editUserProfile(request, id):
+    if request.method == "POST":
+        obj = get_object_or_404(User, id = id)
+        form = UserProfileForm(request.POST, instance=obj)
+
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'employee profile updated')
+            return redirect('accounts:all-employes')
+        else:
+            messages.info(request, 'invalid form data')
+    else:
+        obj = get_object_or_404(User, id = id)
+        form = UserProfileForm(instance =obj)
+    return render(request, 'accounts/edit_user_profile.html', {'form':form})
+
+
+
+
+#############    DELETE EMPLOYEES     ######################
+@staff_member_required(login_url='accounts:auth-login')
+def deleteEmployee(request, id):
+    employee = User.objects.get(id = id)
+    employee.delete()
+    messages.info(request, 'User deleted successfully')
+    return redirect('accounts:all-employes')
+
+
 ###############    CHANGE PASSWORD     ################
-@login_required()
-def ChangePasswordView(request):
-    pass
+def ChangePasswordView(request, id):
+    obj = User.objects.get(id = id)
+    if request.method == "POST":
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        
+        if password1 == password2:
+            obj.set_password(password1)
+            obj.save()
+            messages.info(request, 'password changed successfully')
+            return redirect('accounts:all-employes')
+        else:
+            messages.info(request, 'passwords not matched') 
+    return render(request, 'accounts/reset_password.html')
+
+

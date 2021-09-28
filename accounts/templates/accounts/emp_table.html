@@ -1,0 +1,110 @@
+<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Employee List</h4>
+                    <div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search by name" id = "myInput" onkeyup="myFunction()">
+                          <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                          
+                          
+                          <a href="{% url 'accounts:auth-register' %}"><div class="badge badge-secondary">Add Employee</div></a>
+                          
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                  <div class="card-body p-0">
+                      <table class="table table-striped" id = "myTable">
+                        <tr>
+                          <th class="text-center" onclick="sortTable(0)">Employee ID&nbsp;<i class="fas fa-sort"></i></th>
+                          <th onclick="sortTable(1)">Employee Name&nbsp;<i class="fas fa-sort"></i></th>
+                          <th>Department</th>
+                          <th>Designation</th>
+                          <th>Mobile</th>                         
+                          <th>Action</th>
+                        </tr>
+                        {% for i in emp %}
+                        <tr>
+                          
+
+                              <td class="p-0 text-center">
+                                  {{i.employee_id}}
+                            
+                              </td>
+                              <td>{{i.username}} {{i.last_name}}</td>
+                              <td>{{i.department}}</td>
+                              <td>{{i.designation}}</td>
+
+                              
+                         
+                          
+                          <td>
+                            {{i.mobile}}
+                          </td>
+
+                              <td>
+                                {% comment %} <a class="btn btn-md btn-dark" style="text-decoration: none;" href=""
+                                  data-toggle="tooltip" data-placement="top"
+                                  title="view."
+                                ><i class="fas fa-eye"></i> </a>&nbsp; {% endcomment %}
+
+
+                                <a class="btn btn-md btn-info" style="text-decoration: none;" 
+                                   href="{% url 'accounts:edit-employee' i.id %}"
+                                  data-toggle="tooltip" data-placement="top"
+                                  title="edit"
+                                ><i class="fas fa-pen"></i> </a>&nbsp;
+
+                                <a class="btn btn-md btn-warning" style="text-decoration: none;" 
+                                   href="{% url 'accounts:change-password' i.id %}"
+                                  data-toggle="tooltip" data-placement="top"
+                                  title="Change Password"
+                          
+                                ><i class="fas fa-key"></i> </a>&nbsp; 
+
+                                <a class="btn btn-md btn-danger" style="text-decoration: none;" 
+                                   href="{% url 'accounts:delete-employee' i.id%}"
+                                  data-toggle="tooltip" data-placement="top"
+                                  title="Delete"
+                                ><i class="fas fa-trash"></i> </a>&nbsp;                                                            
+                              </td>                          
+                        </tr> 
+
+                        {% endfor %}   
+                       
+                     
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>
+
+{% block js %}
+
+{% if messages%}
+  <script>
+        iziToast.show({
+                        title: 'yay!!',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'green'
+                        /* {% for i in messages%}
+                          {% ifequal 'danger' i.tags %} red
+                          {% else %} green
+                          {% endifequal%}
+                        {% endfor %} */
+                    });
+  </script>
+  {% endif %}
+
+{% endblock %}
