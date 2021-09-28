@@ -27,5 +27,6 @@ urlpatterns = [
     path('components/', include('components.urls')),
     path('bag/', include('bag.urls')),
     path('order/', include('order.urls')),
+    path('leave/', include('leave.urls')),
 
 ]

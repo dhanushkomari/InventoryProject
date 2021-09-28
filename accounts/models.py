@@ -34,6 +34,7 @@ class CustomUser(AbstractUser):
     date_of_joining = models.DateField(auto_now = True, null=True, blank=True)
     designation = models.CharField(max_length=25, null=True, blank=True)
     status = models.BooleanField(default = True)
+    employee_leaves = models.IntegerField(blank=True, null=True, default = 20)
 
     class Meta:
         verbose_name = 'User'

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+        Components | Vistan Nextgen Pvt Ltd
+{% endblock%}
+            
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
+            <li class="breadcrumb-item active">Apply Leave</li>                   
+          </ul> 
+
+          
+
+            <div class="card-body">       
+                <div class="container">
+
+                    {% if messages %}
+                        {% for i in messages%}
+                        <div class="alert alert-danger alert-dismissible show fade">
+                            <div class="alert-body">
+                            <button class="close" data-dismiss="alert">
+                                <span>&times;</span>
+                            </button>
+                            {{i.message}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+
+                    <form method = "POST">
+                        {% csrf_token %}
+
+                        
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.leave_type|as_crispy_field }}
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                {{ form.total_no_of_leaves|as_crispy_field }}
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-0">
+                                <label for="id_to_date" class=" requiredField">
+                                    From date<span class="asteriskField">*</span>
+                                </label>
+
+                                <div class="">
+                    
+                                    <input type="date" name="from_date" class="dateinput form-control" required id="id_to_date">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6 mb-0">
+                                <label for="id_to_date" class=" requiredField">
+                                    To date<span class="asteriskField">*</span>
+                                </label>
+
+                                <div class="">
+                    
+                                    <input type="date" name="to_date" class="dateinput form-control" required id="id_to_date">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-12 mb-0">
+                                <br>
+                                {{ form.reason|as_crispy_field }}
+                            </div>
+                            
+                        </div>
+
+                            
+                     <div class="footer">
+                         <button class="btn btn-primary">Submit</button>
+                     </div>
+                    </form>
+                </div> 
+            </div> 
+
+             
+          
+        </section>
+      </div>
+    </div>
+{% endblock %}
+
+
+
+{% block js %}
+<script>
+{% if messages %}
+console.log('message')
+
+        iziToast.show({
+                        title: 'Hii',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'success'
+                    });
+ 
+  {% else %}
+  console.log('no messages')
+{% endif %}
+
+</script>
+{% endblock %}

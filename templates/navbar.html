@@ -87,7 +87,7 @@
               <a href="{% url 'accounts:edit-user-profile' user.id %}" class="dropdown-item has-icon"> <i class="fas
 										fa-user"></i> Profile
               </a> 
-              <a href="profile.html" class="dropdown-item has-icon"> <i class="fas
+              <a href="{% url 'accounts:change-password' user.id %}" class="dropdown-item has-icon"> <i class="fas
 										fa-key"></i>Reset Password
               </a> 
               <div class="dropdown-divider"></div>
@@ -95,10 +95,7 @@
                 Logout
               </a>
             </div>
-          </li>
-        
-          
-          
+          </li>    
         
 
           
