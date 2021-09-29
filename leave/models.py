@@ -38,7 +38,7 @@ class Leave(models.Model):
     total_no_of_leaves = models.IntegerField()
     reason = models.CharField(max_length = 100, blank=True, null = True)
     status = models.CharField(choices=status_choices, max_length =20, default = 'requested')
-
+    date_of_apply = models.DateField(auto_now_add=True, blank = True, null=True)
     class Meta:
         ordering = ('-id',)
         verbose_name = 'Leave'

@@ -1,0 +1,81 @@
+<div class="card">
+<div class="row">
+              <div class="col-12">
+                  <div class="card-header">
+                    <h4>Leaves List</h4>
+                    <div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          
+                          <div class="input-group-btn">
+                            <div class="badge badge-primary">Leaves Remaining : <span style="color: orange;">{{request.user.employee_leaves}}</span></div>
+                          </div>
+                          
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                  <div class="card-body p-0">
+                      <table class="table table-striped" id = "myTable">
+                        <tr>
+                          <th class="text-center">Leave ID&nbsp;</th>
+                          
+                          <th>Leave Type</th>
+                          <th>Date of Apply</th>
+                          <th>Total Days</th>
+                          <th>Status</th>
+                          
+                          
+                          
+                          
+                          
+                        </tr>
+                        {% for i in all_leaves %}
+                        <tr>
+                          
+
+                              <td class="p-0 text-center">
+                                  {{i.leave_id}}
+                                </div>
+                              </td>
+                              
+                              <td>{{i.leave_type|title}}</td>
+                              <td>
+
+                              {{i.date_of_apply|date:"d-m-Y"}}
+                              </td>
+
+                              <td>
+                                  {{i.total_no_of_leaves}}
+                              </td>
+                              <td>
+                                  {% ifequal i.status 'requested' %} <div class=" badge badge-secondary">{{i.status}}</div>{% endifequal %}
+                                  {% ifequal i.status 'approved' %} <div class=" badge badge-success">{{i.status}}</div>{% endifequal %}
+                                  {% ifequal i.status 'declined' %} <div class=" badge badge-warning">{{i.status}}</div>{% endifequal %}
+                                  
+
+                                
+                              </td>
+                             
+                              
+
+                              
+                                         
+                         
+                          
+                          
+                          
+                        </tr>  
+                        {% endfor %}   
+                       
+                     
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>

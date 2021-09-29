@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}
+    All Orders | Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Leaves</li>                   
+            
+            <li class="breadcrumb-item active">All Leaves</li>                   
+          </ul>
+
+          {% if all_leaves %}
+
+          <div class="container">
+            {% if messages %}
+              {% for i in messages %}
+                <div class="alert alert-primary alert-dismissible show fade">
+                      <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                        </button>
+                        {{i}}
+                      </div>
+                    </div>
+            
+              {% endfor %}
+            {% endif %}
+            {% include 'leave/all_leaves_table.html' %}
+            
+          {% else %}
+
+          <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>All Leave Requests</h4>
+              </div>
+              <div class="card-body"><br>
+                  <div class="row">
+                  <div class="col-2"></div>
+
+                    <div class="col-8 col-sm-12 col-md-6 text-center">
+                        <img src="{% static "assets/img/leave1.png" %}" 
+                        ><br>
+                        <h5 class="text-center">No leave<span style="color: orangered;"> Applications!</span></h5>                  
+                       
+                    </div>
+                <div class="col-2"></div>
+                                       
+                  </div>               
+               <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          
+
+          {% endif %}
+
+        </section>
+    </div>  
+{% endblock %}
+
+
+{% block js %}
+<script>
+  function myFunction() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+
+    console.log(input, filter, table);
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }       
+    }
+  }
+
+
+
+  function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;  
+  dir = "asc"; 
+  while (switching) {    
+    switching = false;
+    rows = table.rows;   
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {          
+          shouldSwitch = true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {          
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {     
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;      
+      switchcount ++;
+    } else {
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+  
+
+
+
+</script>
+{% endblock %}

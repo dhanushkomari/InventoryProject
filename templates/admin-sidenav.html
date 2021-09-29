@@ -10,15 +10,15 @@
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="tag"></i><span>Component Orders</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{% url 'order:all-orders' %}">Component Requests</a></li>
-                <li><a class="nav-link" href="#">Component Dashboard</a></li>
+                {% comment %} <li><a class="nav-link" href="#">Component Dashboard</a></li> {% endcomment %}
               </ul>
             </li>
 
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="calendar"></i><span>Leaves</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="{% url 'components:component-list-all' %}">Leave Requests</a></li>
-                <li><a class="nav-link" href="#">Leave Dashboard</a></li>
+                <li><a class="nav-link" href="{% url 'leave:all-leaves' %}">Leave Requests</a></li>
+                {% comment %} <li><a class="nav-link" href="#">Leave Dashboard</a></li> {% endcomment %}
               </ul>
             </li>
 

@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block title %}
+    All Orders | Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <li class="breadcrumb-item active">Leaves</li>                   
+            
+            <li class="breadcrumb-item active">All Leaves</li>                   
+          </ul>
+            {% include 'leave/user_leaves_table.html' %}
+          {% if all_leaves %}
+
+         
+          {% else %}
+
+          <div class="col-md-12 col-sm-12 col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4>All Leave Requests</h4>
+              </div>
+              <div class="card-body"><br>
+                  <div class="row">
+                  <div class="col-2"></div>
+
+                    <div class="col-8 col-sm-12 col-md-6 text-center">
+                        <img src="{% static "assets/img/leave1.png" %}" 
+                        ><br>
+                        <h5 class="text-center">You haven't applied for<span style="color: orangered;"> Any Leave</span></h5>                  
+                       
+                    </div>
+                <div class="col-2"></div>
+                                       
+                  </div>               
+               <br><br><br>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          
+
+          {% endif %}
+
+        </section>
+    </div>  
+{% endblock %}

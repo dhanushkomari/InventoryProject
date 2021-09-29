@@ -1,11 +1,12 @@
 from django.http import response
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import LeaveForm
 from django.contrib import messages
 from .models import Leave
 import datetime
+from accounts.models import CustomUser as User
 
 
 
@@ -64,20 +65,28 @@ def apply_leave(request):
         form = LeaveForm     
     return render(request, 'leave/apply_leave.html', {'form':form})
 
+
 #########################################################
 ##############    LEAVES LIST ADMIN    ##################
 #########################################################
 @staff_member_required(login_url='accounts:auth-login')
 def leave_list_admin(request):
-    pass
-
+    all_leaves = Leave.objects.all()
+    return render(request, 'leave/all_leaves_list.html', {'all_leaves': all_leaves})
 
 #########################################################
-###############    APPROVING LEAVE   ####################
+################ LEAVE LIST USER     ####################
 #########################################################
+@user_passes_test(is_employee)
+def leaves_list_user(request, username):
+    all_leaves = Leave.objects.filter(user = username)
+    return render(request, 'leave/user_leaves_list.html', {'all_leaves': all_leaves})
+
+
 @staff_member_required(login_url='accounts:auth-login')
-def leaves_list(request, id):
-    leave = Leave.objects.all()
+def leave_detail_admin(request, id):
+    leave = Leave.objects.get(id = id)
+    return render(request, 'leave/leave_detail_admin.html', {'leave':leave})
 
 
 
@@ -86,11 +95,34 @@ def leaves_list(request, id):
 #########################################################
 @staff_member_required(login_url='accounts:auth-login')
 def approve_leave(request, id):
-    pass
+    leave = Leave.objects.get(id = id)
+
+    if leave.status == 'requested':
+        leave.status = 'approved'
+
+        user = User.objects.get(username = leave.user)        
+        user.employee_leaves = (user.employee_leaves - leave.total_no_of_leaves)
+
+        if user.employee_leaves > 0:
+            user.save()
+            leave.save()
+            messages.info(request, 'Leave approved')
+        else:
+            messages.info(request, "user don't have leaves")
+        
+    return redirect('leave:all-leaves')
 
 #########################################################
 ###############    DECLINING LEAVE   ####################
 #########################################################
 @staff_member_required(login_url='accounts:auth-login')
 def decline_leave(request, id):
-    pass
+    leave = Leave.objects.get(id = id)
+
+    if leave.status == 'requested':
+        leave.status = 'declined'
+        leave.save()
+        messages.info(request, 'Leave declined')
+    
+    return redirect('leave:all-leaves')
+

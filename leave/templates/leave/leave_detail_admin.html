@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Order Detail| Vistan Nextgen
+{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            
+            <li class="breadcrumb-item active">Leave Detail</li>                   
+          </ul>
+
+          <div class="container">
+
+            <div class="card">
+              <div class="card-header">
+                    
+                    
+                       <h4>Leave Details</h4> 
+                       {% if leave %}  
+                        {% ifequal 'requested' leave.status %}
+                        <div class="card-header-form">                         
+                            <div class="input-group">                            
+                                <a href = "{% url 'leave:approve-leave' leave.id %}" class="btn btn-success">approve</a>  
+                                <a href="{% url 'leave:decline-leave' leave.id %}" class="btn btn-warning">decline</a>                          
+                            </div>                                                   
+                        </div>
+                        {% endifequal %}
+                      {% endif %}
+                       
+                    
+              </div>
+              
+              
+              <div class="card-body">
+                {% if leave %}
+                    Leave ID &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{leave}}</span><br><br>
+                    applied by &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{leave.user}}</span><br><br>
+                    Duration &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{leave.from_date|date:"d-m-Y"}} to  {{leave.to_date|date:"d-m-Y"}}</span><br><br>
+                    No.Of Days &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     :  &nbsp;&nbsp; <span style="color: black;">{{leave.total_no_of_leaves}}</span><br><br>
+                    
+                    Leave Status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  : &nbsp;&nbsp; 
+                    
+                    
+                    
+                    
+                    {% ifequal leave.status 'requested' %} <div class="badge badge-secondary">{{leave.status|title}}</div>{% endifequal %}
+                    {% ifequal leave.status 'approved' %} <div class="badge badge-success">{{leave.status|title}}</div>{% endifequal %}
+                    {% ifequal leave.status 'declined' %} <div class="badge badge-danger">{{leave.status|title}}</div>{% endifequal %}
+                   
+                    
+                    
+                    
+                    <br><br>
+                    Date of request&nbsp;&nbsp;  :&nbsp;&nbsp;  <span style="color: black;">{{leave.date_of_apply|date:"d-m-Y"}}</span>
+                {% endif %} <br><br>                
+              </div>
+
+              
+
+                      
+
+        </section>
+    </div>  
+
+    
+
+
+
+
+
+{% endblock %}
