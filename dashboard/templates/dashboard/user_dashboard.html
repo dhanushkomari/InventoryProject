@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+       {{user.username}}'s Dashboard | Vistan Nextgen Pvt Ltd
+{% endblock%}
+            
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
+            <li class="breadcrumb-item active">{{user.username}}'s Dashboard</li>                   
+          </ul> 
+          {% include 'dashboard/user_cards.html' %}
+
+          {% include 'dashboard/user_tables.html' %}
+
+                      
+          
+        </section>
+      </div>
+    </div>
+{% endblock %}  

@@ -28,5 +28,6 @@ urlpatterns = [
     path('bag/', include('bag.urls')),
     path('order/', include('order.urls')),
     path('leave/', include('leave.urls')),
+    path('dashboard/', include('dashboard.urls')),
 
 ]

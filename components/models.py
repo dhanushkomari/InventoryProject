@@ -59,7 +59,7 @@ class Component(models.Model):
     description = models.TextField(blank=True, null=True)
 
     class Meta:
-        ordering = ('id','name','category',)
+        ordering = ('-id',)
         verbose_name = 'Component'
         verbose_name = 'Components'
     

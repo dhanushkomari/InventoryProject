@@ -14,4 +14,9 @@ urlpatterns = [
     path('order-return/<str:id>', views.order_return, name = 'order-return'),
     path('order-deploy/<str:id>', views.order_deploy, name = 'order-deploy'),
     # path('deploy-details', views.deploy_details, name = 'deploy-details-post'),
+
+    path('deploy-list/admin', views.deployed_list_admin, name = 'admin-deploy-list'),
+    path('deploy-list/user/<str:id>', views.deployed_list_user, name = 'user-deploy-list'),
+
+    path('deploy-detail/<str:id>', views.deployed_detail, name = 'deploy-detail')
 ]

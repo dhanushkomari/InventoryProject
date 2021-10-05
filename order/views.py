@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from components.models import Component
+from accounts.models import CustomUser as User
 
 # Create your views here.
 
@@ -151,3 +152,22 @@ def order_deploy(request, id):
         # except ObjectDoesNotExist:
         #     pass
     return redirect('order:all-orders')
+
+@staff_member_required(login_url='accounts:auth-login')
+def deployed_list_admin(request):
+    deployment = Deployment.objects.all().order_by('-id')
+    return render(request, 'order/deploy_list_admin.html', {'deployment':deployment})
+
+@user_passes_test(is_employee)
+def deployed_list_user(request, id):
+    user = User.objects.get(id = id)
+    deployment = Deployment.objects.filter(username = user.username)    
+    return render(request, 'order/deploy_list_user.html', {'deployment':deployment})
+
+def deployed_detail(request, id):
+    deployment = Deployment.objects.get(id =id)
+    dep_items = DeployedItems.objects.filter(deployment = deployment)
+
+    print(dep_items)
+
+    return render(request, 'order/deploy_detail.html', {'deployment':deployment, 'dep_items':dep_items})

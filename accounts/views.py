@@ -1,9 +1,7 @@
 from django.contrib import auth
-from django.http.response import HttpResponse
 from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from django.http import HttpResponse
 from .models import CustomUser as User
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -30,7 +28,7 @@ def LoginView(request):
                 login(request,user)
                 # messages.success(request, 'You have logged in successfully')
                 if user.is_superuser:
-                    return redirect('components:all-components-admin')
+                    return redirect('dashboard:admin-dashboard')
 
 
                 else:
@@ -134,6 +132,7 @@ def editUserProfile(request, id):
             form.save()
             messages.info(request, 'employee profile updated')
             return redirect('accounts:all-employes')
+            # REDIRECTION IS NOT SET AFTER UPDATING(REDIRECT TO DASHBOARD)
         else:
             messages.info(request, 'invalid form data')
     else:

@@ -1,0 +1,101 @@
+<div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Orders List</h4>
+                    <div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="Search by name" id = "myInput" onkeyup="myFunction()">
+                          <div class="input-group-btn">
+                            <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                          </div>
+                          
+                          
+                          
+                          
+
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="table-responsive">
+                  <div class="card-body p-0">
+                      <table class="table table-striped" id = "myTable">
+                        <tr>
+                          <th class="text-center" onclick="sortTable(0)">Order ID&nbsp;<i class="fas fa-sort"></i></th>
+                          <th onclick="sortTable(1)">Username&nbsp;<i class="fas fa-sort"></i></th>
+                          <th>Date of Order</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                          
+                          
+                         
+                        </tr>
+                        {% for i in orders %}
+                        <tr>
+                          
+
+                              <td class="p-0 text-center">
+                                  {{i.order_id}}
+                                </div>
+                              </td>
+                              <td>{{i.username}}</td>
+                              <td>{{i.created_at|date:"d-m-Y"}}</td>
+                              
+                              <td>
+                                {% ifequal i.status 'requested'%} <div class="badge badge-secondary">{{i.status|title}}</div> {% endifequal %}
+                                {% ifequal i.status 'approve'%} <div class="badge badge-success">{{i.status|title}}d</div> {% endifequal %}
+                                {% ifequal i.status 'decline'%} <div class="badge badge-danger">{{i.status|title}}d</div> {% endifequal %}
+                                {% ifequal i.status 'return'%} <div class="badge badge-warning">{{i.status|title}}ed</div> {% endifequal %}
+                                {% ifequal i.status 'deploy' %} <div class="badge badge-dark">{{i.status|title}}ed</div>{% endifequal %}
+                              </td>
+
+                              
+                                         
+                         
+                          
+                         
+
+                             
+
+                              <td>
+                                <a class="text-center" 
+                                               href="{% url 'order:order-detail-admin' i.id %}">
+                                               View Order
+                                               </a>
+                              </td>
+
+                          
+                              
+                        </tr>  
+                        {% endfor %}   
+                       
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+</div>
+
+{% block js %}
+
+{% if messages%}
+  <script>
+        iziToast.show({
+                        title: 'yay!!',
+                        message: '{% for i in messages %}{{i}}{%endfor%}',
+                        position: 'topRight',
+                        color: 'green'
+                        /* {% for i in messages%}
+                          {% ifequal 'danger' i.tags %} red
+                          {% else %} green
+                          {% endifequal%}
+                        {% endfor %} */
+                    });
+  </script>
+  {% endif %}
+
+{% endblock %}

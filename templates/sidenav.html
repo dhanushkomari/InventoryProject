@@ -18,25 +18,16 @@
             <li class="menu-header">Employee</li>
             
             <li>
-              <a href="#" ><i
+              <a href="{% url 'dashboard:user-dashboard' user.id %}" ><i
                   data-feather="airplay"></i><span>Dashboard</span></a>
             </li>
-            
             <li class="dropdown">
+            
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="grid"></i><span>Components</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link" href="{% url 'components:component-list-all' %}">Request for components</a></li>
-                <li><a class="nav-link" href="#">Component Notifications</a></li>
+                {% comment %} <li><a class="nav-link" href="#">Component Notifications</a></li> {% endcomment %}
               </ul>
-            </li>
-            <li >
-              <a href="{% url 'bag:bag_details' %}" ><i data-feather="shopping-bag"></i><span>Your Bag</span></a>
-              
-            </li>
-            
-            <li >
-              <a href="{% url 'order:user-orders' %}" ><i data-feather="tag"></i><span>Your Orders</span></a>
-              
             </li>
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
@@ -46,6 +37,17 @@
                 <li><a class="nav-link" href="{% url 'leave:user-leaves' user.username%}">Leaves Dashboard</a></li>
               </ul>
             </li>
+            <li >
+              <a href="{% url 'bag:bag_details' %}" ><i data-feather="shopping-bag"></i><span>Your Bag</span></a>              
+            </li>
+            
+            <li >
+              <a href="{% url 'order:user-orders' %}" ><i data-feather="tag"></i><span>Your Orders</span></a>              
+            </li>
+            <li >
+              <a href="{% url 'order:user-deploy-list' user.id %}" ><i data-feather="truck"></i><span>Your Deployments</span></a>              
+            </li>
+            
             
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>

@@ -1,0 +1,190 @@
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+              <div class="card">
+                <div class="card-header">
+                  <h4>Recent Orders</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive" id="proTeamScroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th>User</th>
+                          <th>Date</th>
+                          <th>Status</th>                         
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+
+                      {% for i in orders %}
+                      <tr>
+                        <td>{{i.order_id}}
+                        </td>
+                        <td>
+                          <h6 class="mb-0 font-13">Inventory Items</h6>
+                          <p class="m-0 font-12">
+                            Requested by<span class="col-green font-weight-bold"> {{i.username}}</span>
+                          </p>
+                        </td>
+                        <td>{{i.created_at}}</td>
+                        <td class="text-truncate">
+                            {% ifequal i.status 'requested'%}<div class="badge-outline col-blue">{{i.status}}</div>{% endifequal %}
+                            {% ifequal i.status 'approve'%}<div class="badge-outline col-green">{{i.status}}d</div>{% endifequal %}
+                            {% ifequal i.status 'decline'%}<div class="badge-outline col-red">{{i.status}}d</div>{% endifequal %}
+                            {% ifequal i.status 'return'%}<div class="badge-outline col-orange">{{i.status}}ed</div>{% endifequal %}
+                            {% ifequal i.status 'deploy'%}<div class="badge-outline col-black">{{i.status}}ed</div>{% endifequal %}
+            
+                        </td>
+                        
+                       
+                        <td>
+                          <a href="{% url 'order:order-detail-admin' i.id %}" data-toggle="tooltip" title="" data-original-title="View"><i
+                              class="fas fa-eye"></i></a>
+                         
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    </table>
+                    <center><a style="text-decoration: none;" href="{% url 'order:all-orders' %}">View More Orders</a></center>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Employees(Recently Added)</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="media-list position-relative">
+                      <div class="table-responsive" id="project-team-scroll">
+                        <table class="table table-hover table-xl mb-0">
+                          <thead>
+                            <tr>
+                              <th>Employee ID</th>
+                              <th>Details</th>
+                             
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for i in users%}
+                            <tr>
+                              <td class="text-truncate">{{i.employee_id}}</td>
+                              
+                              <td>
+                                <h6 class="mb-0 font-13 col-blue font-weight-bold">{{i.first_name}} {{i.last_name}}</h6>
+                                <p class="m-0 font-12">
+                                  Working as <span class="col-orange font-weight-bold"> {{i.designation}}</span>
+                                </p>
+                              </td>
+                            </tr>
+                        
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                        <br>
+                        <center><a style="text-decoration: none;" href="{% url 'accounts:all-employes' %}">View More Employees</a></center>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>Leaves</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="media-list position-relative">
+                          <div class="table-responsive" id="project-team-scroll">
+                            <table class="table table-hover table-xl mb-0">
+                              <thead>
+                                <tr>
+                                  <th>Leave ID</th>
+                                  <th>Details</th>
+                                 
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for i in leaves%}
+                                <tr>
+                                  <td class="text-truncate">{{i.leave_id}}</td>
+                                  
+                                  <td>
+                                    <h6 class="mb-0 font-13 col-green font-weight-bold">{{i.user}}<span class="col-black">({{i.total_no_of_leaves}} days)</span></h6>
+                                    <p class="m-0 font-12">
+                                      From  <span class="col-blue"> {{i.from_date|date:"d-m-Y"}} to {{i.to_date|date:"d-m-Y"}}</span>
+                                    </p>
+                                  </td>
+                                </tr>
+                            
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                            <br>
+                            <center><a style="text-decoration: none;" href="{% url 'leave:all-leaves' %}">View More</a></center>
+    
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                    <div class="card">
+                      <div class="card-header">
+                        <h4>Components(Recently Added)</h4>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive" id="proTeamScroll">
+                          <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Component ID</th>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Stock</th>                         
+                                <th>Action</th>
+                              </tr>
+                            </thead>
+      
+                            {% for i in components %}
+                            <tr>
+                              <td>{{i.component_id}}
+                              </td>
+                              <td>
+                                
+                                <p class="m-0 font-12">
+                                  <span class="col-green font-weight-bold"> {{i.name}}</span>
+                                </p>
+                              </td>
+                              <td>
+                                  {{i.category}}
+                              </td>
+                              <td>{{i.stock}}</td>
+                              
+                             
+                              <td>
+                                <a href="" data-toggle="tooltip" title="" data-original-title="View"><i
+                                    class="fas fa-eye"></i></a>
+                               
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </table>
+                          <center><a style="text-decoration: none;" href="{% url 'components:all-components-admin' %}">View More Components</a></center>
+                        </div>
+                      </div>
+                    </div>
+                  </div>       
+
+            </div>

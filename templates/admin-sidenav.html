@@ -2,7 +2,7 @@
             <li class="menu-header">ADMIN</li>
             
             <li>
-              <a href="#" ><i
+              <a href="{%url 'dashboard:admin-dashboard' %}" ><i
                   data-feather="airplay"></i><span>Dashboard</span></a>
             </li>
 
@@ -30,6 +30,8 @@
                 <li><a class="nav-link" href="{% url 'components:add-component' %}">add Components</a></li>                
                 <li><a href="{% url 'components:all-categories' %}" class="nav-link">All Categories</a></li>
                 <li><a class="nav-link" href="{% url 'components:add-category' %}">Add Category</a></li>
+                <li><a class="nav-link" href="">Deployed Components</a></li>
+                
                 
 
               </ul>
@@ -43,6 +45,11 @@
                 <li><a class="nav-link" href="{% url 'accounts:auth-register' %}">Add Employees</a></li>
 
               </ul>
+            </li>
+
+             <li>
+              <a href="{% url 'order:admin-deploy-list' %}" ><i
+                  data-feather="truck"></i><span>Deployment</span></a>
             </li>
 
 
