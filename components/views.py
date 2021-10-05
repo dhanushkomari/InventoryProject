@@ -139,7 +139,10 @@ def delete_component(request, id):
     pass
 
 
-
+@login_required(login_url='accounts:auth-login')
+def detailed_component(request, id):
+    component = Component.objects.get(id = id)    
+    return render(request, 'components/component_detail.html', {'component':component})
 
 
 

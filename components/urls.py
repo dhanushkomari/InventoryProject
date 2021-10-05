@@ -11,6 +11,7 @@ urlpatterns = [
     path('add/category', views.add_category, name = 'add-category'),
     path('update/category/<str:id>', views.update_category, name = 'update-category'),
     path('delete/category/<str:id>', views.delete_category, name='delete-category'),
+    path('detail/component/<str:id>', views.detailed_component, name = 'component-detail'),
 
 
     path('admin/all', views.allcomponents, name = 'all-components-admin'),

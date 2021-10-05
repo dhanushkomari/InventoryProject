@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+        Component Detail | Vistan Nextgen Pvt Ltd
+{% endblock%}
+            
+
+
+{% block content %}
+      
+      <!-- Main Content -->
+      <div class="main-content">
+        <section class="section">
+          <ul class="breadcrumb breadcrumb-style ">
+            
+            <li class="breadcrumb-item">
+              <a href="index-2.html">
+                <i data-feather="home"></i></a>
+            </li>
+            <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
+            <li class="breadcrumb-item active">Component Details</li>                   
+          </ul>   
+
+          {% if messages %}
+            {% for i in messages %}
+              <div class="alert alert-success alert-dismissible show fade">
+                      <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                        </button>
+                        {{i}}
+                      </div>
+                    </div>
+            {% endfor %}
+          {% endif %}   
+
+
+          <div class="section-body">
+            <div class="row">
+              <div class="col-12">
+                <div class="card">
+                  <div class="card-header">
+                    <h4>Component Details</h4>
+
+                    {% if user.is_staff %}{% else %}<div class="card-header-form">
+                      
+                      <form>
+                        
+                        <div class="input-group">
+                          
+                          <div class="input-group-btn">
+                            <a href="{% url 'bag:add_to_bag' component.component_id %}">
+                              <div class="badge badge-primary">Add to bag</div>
+                            </a>
+                          </div>
+                         </div>
+                      </form>
+                    </div>{% endif %}
+                  </div>
+                  <div class="card-body">
+                      <div class="row">
+                          <div class="col-1"></div>
+                          <div class="col-10">
+                              <div class="container">
+                                Component ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ::  &nbsp;&nbsp;<span class="col-blue">{{component.component_id}}</span> <br><br>  
+                                Component ID(by Vendor) &nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.component_id_by_vendor}}</span> <br><br>
+                                Component Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::  &nbsp;&nbsp;<span class="col-blue">{{component.name}}</span> <br><br>
+                                Component Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.category}}</span><br><br>
+                                Component Location &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.component_location}}</span><br><br>
+                                {%if user.is_staff%} Date of Order &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.date_of_order|date:"d-m-Y"}}</span><br><br>
+                                Component Added &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.created_at|date:"d-m-Y"}}</span> <br><br>
+                                Component Updated &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.updated_at|date:"d-m-Y"}}</span> <br><br>
+                                avialable &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :: &nbsp;&nbsp;<span class="col-blue">{{component.avialable}}</span><br><br>
+                                stock &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.stock}}</span>  <br><br>    
+                                price  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:: &nbsp;&nbsp;<span class="col-blue">{{component.price}}</span> <br><br>{% endif %}
+                                description &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;::  &nbsp;&nbsp;<span class="col-blue">{{component.description}}</span><br><br>
+
+                              </div>
+                             
+                          </div>
+
+                         <div class="col-1"></div>
+
+                          
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>    
+
+          
+
+          
+          
+        </section>
+      </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+      
