@@ -49,6 +49,7 @@ class Component(models.Model):
     component_location = models.CharField(max_length =  100, default='inventory')
     vendor = models.CharField(max_length=100, null = True, blank=True)
     invoice = models.CharField(max_length=25, blank=True, null=True)
+    component_id_by_vendor = models.CharField(blank = True, null=True, max_length=35)
     date_of_order = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now = True)

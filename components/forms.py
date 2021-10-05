@@ -15,6 +15,6 @@ class CategoryForm(forms.ModelForm):
 class ComponentForm(forms.ModelForm):
     class Meta:
         model = Component
-        fields = ('name', 'category', 'component_location', 'vendor', 'invoice', 'date_of_order', 'stock', 'price', 'description')
+        fields = ('name', 'category', 'component_location', 'vendor', 'invoice','component_id_by_vendor', 'date_of_order', 'stock', 'price', 'description')
         
         
