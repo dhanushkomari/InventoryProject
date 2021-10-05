@@ -22,6 +22,20 @@
             <li class="breadcrumb-item active">All Components</li>                   
           </ul> 
 
+          {% if messages %}
+            {% for i in messages %}
+              <div class="alert alert-success alert-dismissible show fade">
+                      <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                          <span>&times;</span>
+                        </button>
+                        {{i}}
+                      </div>
+                    </div>
+            {% endfor %}
+          {% endif %}
+
+          
           {% include 'components/all_comp_table.html' %}              
           
         </section>

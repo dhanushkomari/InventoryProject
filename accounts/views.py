@@ -130,8 +130,8 @@ def editUserProfile(request, id):
 
         if form.is_valid():
             form.save()
-            messages.info(request, 'employee profile updated')
-            return redirect('accounts:all-employes')
+            messages.info(request, 'Profile has been updated')
+            return redirect('components:component-list-all')
             # REDIRECTION IS NOT SET AFTER UPDATING(REDIRECT TO DASHBOARD)
         else:
             messages.info(request, 'invalid form data')

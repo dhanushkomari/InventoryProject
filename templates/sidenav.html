@@ -52,7 +52,7 @@
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="settings"></i><span>Settings</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Profile</a></li>
+                <li><a class="nav-link" href="{% url 'accounts:edit-user-profile' user.id %}">Edit Profile</a></li>
                 <li><a class="nav-link" href="{% url 'accounts:change-password' user.id %}">Change Password</a></li>
                 <li><a class="nav-link" href="#">Logout</a></li>
                 
