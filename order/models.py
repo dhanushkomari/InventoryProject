@@ -20,7 +20,7 @@ class Order(models.Model):
         final = str1+result   
         return final
 
-    order_id = models.CharField(max_length = 25, unique = True, default=auto_order_id, editable = False)
+    order_id = models.CharField(max_length = 25,default=auto_order_id, editable = False)
     created_at = models.DateTimeField(auto_now_add = True)
     username = models.CharField(max_length =25, editable=False)
     email = models.CharField(max_length =100, editable=False)

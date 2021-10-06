@@ -84,11 +84,11 @@
                                     title="edit"
                                 ><i class="fas fa-pen"></i></a>
                                 &nbsp;
-                                <a href="{% url 'accounts:delete-dept' i.id %}" class="btn btn-danger btn-md"
+                                {% comment %} <a href="{% url 'accounts:delete-dept' i.id %}" class="btn btn-danger btn-md"
                                   data-toggle="tooltip" data-placement="top"
                                   title="Delete"
                                 
-                                ><i class="fas fa-trash"></i></a>
+                                ><i class="fas fa-trash"></i></a> {% endcomment %}
 
                               </td>
                </tr>  
