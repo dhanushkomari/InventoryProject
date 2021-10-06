@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-        Update Category | Vistan Nextgen Pvt Ltd
+        Update Department | Vistan Nextgen Pvt Ltd
 {% endblock%}
             
 
@@ -20,21 +20,20 @@
                 <i data-feather="home"></i></a>
             </li>
             <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
-            <li class="breadcrumb-item active">Update Category</li>                   
+            <li class="breadcrumb-item active">Update Department</li>                   
           </ul>      
 
 
             <div class="card">
                 <div class="card-header">
-                <h4>Update Category</h4>
+                <h4>Update Department</h4>
             </div>
                   
             <div class="card-body">       
                 <div class="container">
                     <form method = "POST">
                         {% csrf_token %}
-
-                            {{form|crispy}}
+                        {{form|crispy}}
                      <div class="footer">
                          <button class="btn btn-primary">Submit</button>
                      </div>
@@ -47,22 +46,3 @@
 {% endblock %}
 
 
-{% block js %}
-
-{% if messages%}
-  <script>
-        iziToast.show({
-                        title: '',
-                        message: '{% for i in messages %}{{i}}{%endfor%}',
-                        position: 'topRight',
-                        color: 'green'
-                        /* {% for i in messages%}
-                          {% ifequal 'danger' i.tags %} red
-                          {% else %} green
-                          {% endifequal%}
-                        {% endfor %} */
-                    });
-  </script>
-  {% endif %}
-
-{% endblock %}

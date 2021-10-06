@@ -2,11 +2,11 @@ from django.contrib import auth
 from django.shortcuts import render,get_object_or_404, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .models import CustomUser as User
+from .models import CustomUser as User, Department
 from django.contrib.auth.models import Group
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
-from .forms import UserForm, UserProfileForm
+from .forms import UserForm, UserProfileForm, DepartmentForm
 
 
 def is_employee(user):
@@ -97,8 +97,8 @@ def RegisterEmployee(request):
 ###########    ALL EMPLOYEES     ######################
 @staff_member_required(login_url='accounts:auth-login')
 def allEmployees(request):
-    emp = User.objects.filter(groups = 1)  
-    print(emp)  
+    emp = User.objects.all()
+     
     # return HttpResponse('Hii')
     return render(request, 'accounts/all_employees.html', {'emp':emp})
 
@@ -167,5 +167,49 @@ def ChangePasswordView(request, id):
         else:
             messages.info(request, 'passwords not matched') 
     return render(request, 'accounts/reset_password.html')
+
+#############    CREATE DEPARTMENT   ####################
+@staff_member_required(login_url='accounts:auth-login')
+def create_dept(request):
+    if request.method == "POST":
+        dept_name = request.POST['dept_name']
+        dept_description = request.POST['dept_description']
+
+        dept = Department.objects.create(dept_name = dept_name,dept_description = dept_description)
+        dept.save()
+        return redirect('accounts:all-depts')
+
+    return render(request, 'accounts/create_dept.html')
+
+@staff_member_required(login_url='accounts:auth-login')
+def update_dept(request, id):
+    if request.method == "POST":
+        obj = get_object_or_404(Department, id = id)
+        form = DepartmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.info(request, 'Department updated succesfully')
+            return redirect('accounts:all-depts')
+        else:
+            messages.info(request, 'Invalid form data')
+    else:
+        obj = get_object_or_404(Department, id = id)
+        form = DepartmentForm(instance = obj)
+
+    return render(request, 'accounts/update_dept.html', {'form':form})
+
+@staff_member_required(login_url='accounts:auth-login')
+def delete_dept(request, id):
+    dept = Department.objects.get(id = id)
+    dept.delete()
+    messages.info(request, 'department deleted succesfully')
+    return redirect('accounts:all-depts')
+    
+
+@staff_member_required(login_url='accounts:auth-login')
+def dept_list(request):
+    dept = Department.objects.all()
+    return render(request, 'accounts/all_depts.html', {'dept':dept})
+    
 
 

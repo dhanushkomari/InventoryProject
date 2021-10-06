@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-        Category | Vistan Nextgen Pvt Ltd
+        Add Department | Vistan Nextgen Pvt Ltd
 {% endblock%}
             
 
@@ -20,7 +20,7 @@
                 <i data-feather="home"></i></a>
             </li>
             <!-- <li class="breadcrumb-item active">Dashboard</li>    -->
-            <li class="breadcrumb-item active">Add Category</li>                   
+            <li class="breadcrumb-item active">Add Department</li>                   
           </ul>      
 
 
@@ -36,14 +36,14 @@
                     <div class="col-md-12">                        
                         <div class="form-group">
                          <label>Name</label>
-                         <input type="text" name = "name" class="form-control">
+                         <input type="text" name = "dept_name" class="form-control">
                          </div>
                      </div>
 
                      <div class="col-12">
                          <div class="form-group pmd-textfield pmd-textfield-floating-label">
                              <label>Description</label>
-                             <textarea name = "description" class="form-control" id="reason" name="reason"></textarea>
+                             <textarea name = "dept_description" class="form-control" id="reason" name="reason"></textarea>
                          </div>
                      </div>
                      <div class="footer">
@@ -58,22 +58,3 @@
 {% endblock %}
 
 
-{% block js %}
-
-{% if messages%}
-  <script>
-        iziToast.show({
-                        title: '',
-                        message: '{% for i in messages %}{{i}}{%endfor%}',
-                        position: 'topRight',
-                        color: 'green'
-                        /* {% for i in messages%}
-                          {% ifequal 'danger' i.tags %} red
-                          {% else %} green
-                          {% endifequal%}
-                        {% endfor %} */
-                    });
-  </script>
-  {% endif %}
-
-{% endblock %}

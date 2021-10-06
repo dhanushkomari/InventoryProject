@@ -26,7 +26,7 @@ def is_hr(user):
 #########################################################
 def _bag_id(request):
     cart = request.user.username
-    print(cart)
+    # print(cart)
     if not cart:
         cart = request.user.username
     return cart

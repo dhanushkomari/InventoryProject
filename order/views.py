@@ -23,16 +23,16 @@ def order_success(request):
 @user_passes_test(is_employee)
 def user_orders(request):
     orders = Order.objects.filter(username = request.user.username)
-    print(orders)
+    # print(orders)
 
     return render(request, 'order/orders.html', {'orders':orders})
 
 @user_passes_test(is_employee)
 def order_detail(request, id):
     order = Order.objects.get(id = id)
-    print(order)
+    # print(order)
     oi = OrderItem.objects.filter(order_id = order)
-    print(oi)
+    # print(oi)
 
     return render(request, 'order/order_detail.html', {'oi':oi, 'order':order})
 
@@ -47,9 +47,9 @@ def all_order(request):
 @staff_member_required(login_url='accounts:auth-login')
 def order_detail_admin(request, id):
     order = Order.objects.get(id = id)
-    print(order)
+    # print(order)
     oi = OrderItem.objects.filter(order_id = order)
-    print(oi)
+    # print(oi)
 
     return render(request, 'order/order_detail_admin.html', {'oi':oi, 'order':order})
 
@@ -68,24 +68,24 @@ def order_accept(request, id):
 def order_decline(request, id):
     order = Order.objects.get(id = id)
     if order.status == 'requested':
-        print('status = requested')
+        # print('status = requested')
         order.status = 'decline'
         order.save()
 
         oi = OrderItem.objects.filter(order_id = order)
-        print(oi)
+        # print(oi)
 
         for i in oi:
             oi_id = i.order_id
             oi_name = i.component
             oi_quantity = i.quantity
 
-            print(oi_quantity)
+            # print(oi_quantity)
             
             component = Component.objects.get(name = oi_name)
-            print()
-            print(component.stock)
-            print()
+            # print()
+            # print(component.stock)
+            # print()
             component.stock = component.stock + oi_quantity
             component.save()
 
@@ -168,6 +168,6 @@ def deployed_detail(request, id):
     deployment = Deployment.objects.get(id =id)
     dep_items = DeployedItems.objects.filter(deployment = deployment)
 
-    print(dep_items)
+    # print(dep_items)
 
     return render(request, 'order/deploy_detail.html', {'deployment':deployment, 'dep_items':dep_items})

@@ -37,7 +37,7 @@ def apply_leave(request):
         to_date = request.POST['to_date']
         reason = request.POST['reason']
 
-        print(user, email, leave_type, total_no_of_leaves, from_date, to_date, reason)
+        # print(user, email, leave_type, total_no_of_leaves, from_date, to_date, reason)
 
         start_date = datetime.datetime.strptime(from_date, "%Y-%m-%d")
         end_date = datetime.datetime.strptime(to_date, "%Y-%m-%d")
