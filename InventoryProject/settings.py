@@ -125,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/kolkata'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -152,3 +152,5 @@ MEDIA_ROOT =  os.path.join(BASE_DIR,'static', 'media')
 LOGIN_URL = '/accounts/auth-login'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

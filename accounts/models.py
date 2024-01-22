@@ -26,6 +26,7 @@ gender_choices = (
     ('female', 'female')
 )
 class CustomUser(AbstractUser):
+    id = models.BigAutoField(primary_key = True)
     employee_id = models.CharField(max_length = 10, null=True, blank=True)
     department = models.ForeignKey(Department, on_delete = models.CASCADE, null=True)
     mobile = models.CharField(max_length = 10, null=True, blank=True)
