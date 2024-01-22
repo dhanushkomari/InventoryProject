@@ -29,11 +29,11 @@
                         </td>
                         <td>{{i.created_at}}</td>
                         <td class="text-truncate">
-                            {% ifequal i.status 'requested'%}<div class="badge-outline col-blue">{{i.status}}</div>{% endifequal %}
-                            {% ifequal i.status 'approve'%}<div class="badge-outline col-green">{{i.status}}d</div>{% endifequal %}
-                            {% ifequal i.status 'decline'%}<div class="badge-outline col-red">{{i.status}}d</div>{% endifequal %}
-                            {% ifequal i.status 'return'%}<div class="badge-outline col-orange">{{i.status}}ed</div>{% endifequal %}
-                            {% ifequal i.status 'deploy'%}<div class="badge-outline col-black">{{i.status}}ed</div>{% endifequal %}
+                            {% if i.status == 'requested'%}<div class="badge-outline col-blue">{{i.status}}</div>{% endif %}
+                            {% if i.status == 'approve'%}<div class="badge-outline col-green">{{i.status}}d</div>{% endif %}
+                            {% if i.status == 'decline'%}<div class="badge-outline col-red">{{i.status}}d</div>{% endif %}
+                            {% if i.status == 'return'%}<div class="badge-outline col-orange">{{i.status}}ed</div>{% endif %}
+                            {% if i.status == 'deploy'%}<div class="badge-outline col-black">{{i.status}}ed</div>{% endif %}
             
                         </td>
                         
