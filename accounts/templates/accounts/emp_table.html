@@ -98,11 +98,11 @@
                         message: '{% for i in messages %}{{i}}{%endfor%}',
                         position: 'topRight',
                         color: 'green'
-                        /* {% for i in messages%}
-                          {% ifequal 'danger' i.tags %} red
+                         {% for i in messages%}
+                          {% if 'danger' == i.tags %} red
                           {% else %} green
-                          {% endifequal%}
-                        {% endfor %} */
+                          {% endif%}
+                         {% endfor %} 
                     });
   </script>
   {% endif %}
